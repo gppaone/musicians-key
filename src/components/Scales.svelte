@@ -12,10 +12,12 @@
         { name: 'Aeolian (natural minor)', pattern: [2, 1, 2, 2, 1, 2, 2] },
         { name: 'Locrian (diminished)', pattern: [1, 2, 2, 1, 2, 2, 2] }
     ];
-    let othermodes = [    
+    let othermodes = [ 
+        { name: 'Blues', pattern: [3, 2, 1, 1, 3] }, 
         { name: 'Minor Pentatonic', pattern: [3, 2, 2, 3, 2] },
         { name: 'Major Pentatonic', pattern: [2, 2, 3, 2, 3] },
-        { name: 'Diminished', pattern: [2, 1, 2, 1, 2, 1, 2, 1] }
+        { name: 'Diminished', pattern: [2, 1, 2, 1, 2, 1, 2, 1] },
+        
 
     ];
 
@@ -78,6 +80,7 @@
     // update from root
     $: modeScales = generateModesFromScale(rootNote);
     $: modeOtherScales = generateOtherModesFromScale(rootNote);
+
 </script>
 
 
@@ -91,6 +94,7 @@
             </div>
         </div>
     {/each}
+    <hr />
     {#each modeOtherScales as { modeName, scale }}
     <h5>{modeName}</h5>
     <div class="container list-group-item">
@@ -101,20 +105,24 @@
         </div>
     </div>
     {/each}
+    <div class="arrow-container">
+        <div class="arrow" id="arrow"></div>
+    </div>
+    
 <style>
-        h5 {
-            color: #ff3e00;
-            text-transform: uppercase;
-            font-size: 1.25em;
-            font-weight: 100;
-            text-align: left;
-            margin-top: 20px;
-        }
-        .container .row .col {
-            padding: 5px 0;
-        }
-        .container .row .col:hover {
-            background-color: #dddddd;
-        }
+    h5 {
+        color: #ff3e00;
+        text-transform: uppercase;
+        font-size: 1.25em;
+        font-weight: 100;
+        text-align: left;
+        margin-top: 20px;
+    }
+    .container .row .col {
+        padding: 5px 0;
+    }
+    .container .row .col:hover {
+        background-color: #dddddd;
+    }
 
 </style>

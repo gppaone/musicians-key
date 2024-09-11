@@ -67,6 +67,9 @@
     </div>
 </div>
 {/each}
+<div class="arrow-container">
+    <div class="arrow" id="arrow"></div>
+</div>
 
 <style>
         h5 {
