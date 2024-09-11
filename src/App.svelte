@@ -3,16 +3,16 @@
     import 'bootstrap/dist/js/bootstrap.bundle.min.js';
     import Scales from "./components/Scales.svelte";
     import Chords from "./components/Chords.svelte";
+    import Navbar from "./components/Navbar.svelte";
     
     export let rootNote = 'A';
 
     let notes = ['A','A#','B','C','C#','D','D#','E','F','F#','G', "G#"];
     
 </script>
-
-<!-- Dropdown to select the root note -->
-
+<Navbar />
 <main>
+    <!-- Dropdown to select the root note -->
     <div class="search input-group mb-3">
         <span class="input-group-text" id="basic-addon1">Scale:</span>
         <select class="form-select" bind:value={rootNote}>
