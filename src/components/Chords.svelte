@@ -1,6 +1,7 @@
 <script>
     // all notes
     let notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+    export let pulse = false;
 
     // modes and patterns
     let chordArr = [
@@ -59,7 +60,7 @@
 
 {#each otherChords as { chordName, chord }}
 <h5>{rootNote} {chordName}</h5>
-<div class="container list-group-item">
+<div class="container list-group-item {pulse ? 'pulse' : ''}">
     <div class="row">
     {#each chord as note}
         <div class="col">{note}</div>
@@ -72,18 +73,30 @@
 </div>
 
 <style>
-        h5 {
-            color: #ff3e00;
-            text-transform: uppercase;
-            font-size: 1.25em;
-            font-weight: 100;
-            text-align: left;
-            margin-top: 20px;
-        }
-        .container .row .col {
-            padding: 5px 0;
-        }
-        .container .row .col:hover {
-            background-color: #dddddd;
-        }
+    h5 {
+        color: #ff3e00;
+        text-transform: uppercase;
+        font-size: 1.25em;
+        font-weight: 100;
+        text-align: left;
+        margin-top: 20px;
+    }
+    .container .row .col {
+        padding: 5px 0;
+    }
+    .container .row .col:hover {
+        background-color: #dddddd;
+    }
+    .pulse{
+        animation:pulse 1500ms;
+    }
+
+    @keyframes pulse{
+    0%{
+        box-shadow:#ff69b4 0 0 0 0;
+    }
+    75%{
+        box-shadow:#ff69b400 0 0 0 16px;
+    }
+    }
 </style>

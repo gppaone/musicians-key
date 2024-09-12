@@ -1,6 +1,7 @@
 <script>
     // all notes
     let notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+    export let pulse = false;
 
     // modes and patterns
     let modes = [
@@ -86,7 +87,7 @@
 
     {#each modeScales as { modeName, scale }}
         <h5>{modeName}</h5>
-        <div class="container list-group-item">
+        <div class="container list-group-item {pulse ? 'pulse' : ''}">
             <div class="row">
             {#each scale as note}
                 <div class="col">{note}</div>
@@ -97,7 +98,7 @@
     <hr />
     {#each modeOtherScales as { modeName, scale }}
     <h5>{modeName}</h5>
-    <div class="container list-group-item">
+    <div class="container list-group-item {pulse ? 'pulse' : ''}">
         <div class="row">
         {#each scale as note}
             <div class="col">{note}</div>
@@ -124,5 +125,17 @@
     .container .row .col:hover {
         background-color: #dddddd;
     }
+    
+    .pulse{
+        animation:pulse 1500ms;
+    }
 
+    @keyframes pulse{
+    0%{
+        box-shadow:#ff69b4 0 0 0 0;
+    }
+    75%{
+        box-shadow:#ff69b400 0 0 0 16px;
+    }
+    }
 </style>
