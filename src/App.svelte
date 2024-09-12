@@ -13,7 +13,7 @@
 <Navbar />
 <main>
     <!-- Dropdown to select the root note -->
-    <div class="search input-group mb-3">
+    <div class="container search input-group mb-3">
         <span class="input-group-text" id="basic-addon1">Scale:</span>
         <select class="form-select" bind:value={rootNote}>
             {#each notes as note}
