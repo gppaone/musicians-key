@@ -60,7 +60,7 @@
 
 {#each otherChords as { chordName, chord }}
 <h5>{rootNote} {chordName}</h5>
-<div class="container list-group-item {pulse ? 'pulse' : ''}">
+<div class="container-fluid list-group-item  {pulse ? 'pulse' : ''}">
     <div class="row">
     {#each chord as note}
         <div class="col">{note}</div>
@@ -87,13 +87,23 @@
     .container .row .col:hover {
         background-color: #dddddd;
     }
+    .container-fluid.list-group-item {
+        padding:0;
+    }
+    .container-fluid.list-group-item .row {
+        padding:0;
+        margin:0;
+    }
+    .container-fluid.list-group-item .row .col {
+        padding:10px;
+    }
     .pulse{
         animation:pulse 1500ms;
     }
 
     @keyframes pulse{
     0%{
-        box-shadow:#ff69b4 0 0 0 0;
+        box-shadow:#aaaaab 0 0 0 0;
     }
     75%{
         box-shadow:#ff69b400 0 0 0 16px;

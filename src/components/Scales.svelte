@@ -5,13 +5,13 @@
 
     // modes and patterns
     let modes = [
-        { name: 'Ionian (major)', pattern: [2, 2, 1, 2, 2, 2, 1] },
-        { name: 'Dorian (minor)', pattern: [2, 1, 2, 2, 2, 1, 2] },
-        { name: 'Phrygian (minor)', pattern: [1, 2, 2, 2, 1, 2, 2] },
-        { name: 'Lydian (major)', pattern: [2, 2, 2, 1, 2, 2, 1] },
-        { name: 'Mixolydian (major)', pattern: [2, 2, 1, 2, 2, 1, 2] },
-        { name: 'Aeolian (natural minor)', pattern: [2, 1, 2, 2, 1, 2, 2] },
-        { name: 'Locrian (diminished)', pattern: [1, 2, 2, 1, 2, 2, 2] }
+        { name: 'Ionian (major)', num:"I", pattern: [2, 2, 1, 2, 2, 2, 1] },
+        { name: 'Dorian (minor)', num:"ii", pattern: [2, 1, 2, 2, 2, 1, 2] },
+        { name: 'Phrygian (minor)', num:"iii", pattern: [1, 2, 2, 2, 1, 2, 2] },
+        { name: 'Lydian (major)', num:"IV", pattern: [2, 2, 2, 1, 2, 2, 1] },
+        { name: 'Mixolydian (major)', num:"V", pattern: [2, 2, 1, 2, 2, 1, 2] },
+        { name: 'Aeolian (natural minor)', num:"vi", pattern: [2, 1, 2, 2, 1, 2, 2] },
+        { name: 'Locrian (diminished)', num:"vii", pattern: [1, 2, 2, 1, 2, 2, 2] }
     ];
     let othermodes = [ 
         { name: 'Blues', pattern: [3, 2, 1, 1, 3] }, 
@@ -56,10 +56,11 @@
         for (let i = 0; i < modes.length; i++) {
             let modeName = modes[i].name;
             let pattern = modes[i].pattern;
+            let num = modes[i].num;
             let modeRootNote = ionianScale[i];
             let scale = generateStepScale(modeRootNote, pattern);
     
-            modeScales.push({ modeName, modeRootNote, scale });
+            modeScales.push({ modeName, num, modeRootNote, scale });
         }
         return modeScales;
     }
@@ -85,10 +86,11 @@
 </script>
 
 
-    {#each modeScales as { modeName, scale }}
+    {#each modeScales as { modeName, num, scale }}
         <h5>{modeName}</h5>
-        <div class="container list-group-item {pulse ? 'pulse' : ''}">
+        <div class="container-fluid list-group-item {pulse ? 'pulse' : ''}">
             <div class="row">
+                <div class="col num">{num}</div>
             {#each scale as note}
                 <div class="col">{note}</div>
             {/each}
@@ -98,7 +100,7 @@
     <hr />
     {#each modeOtherScales as { modeName, scale }}
     <h5>{modeName}</h5>
-    <div class="container list-group-item {pulse ? 'pulse' : ''}">
+    <div class="container-fluid list-group-item {pulse ? 'pulse' : ''}">
         <div class="row">
         {#each scale as note}
             <div class="col">{note}</div>
@@ -125,14 +127,27 @@
     .container .row .col:hover {
         background-color: #dddddd;
     }
-    
+    .container-fluid.list-group-item {
+        padding:0;
+    }
+    .container-fluid.list-group-item .row {
+        padding:0;
+        margin:0;
+    }
+    .container-fluid.list-group-item .row .col {
+        padding:10px;
+    }
     .pulse{
         animation:pulse 1500ms;
     }
 
+    .row .col.num {
+        border-right:1px solid #ddd;
+        background-color:#eee;
+    }
     @keyframes pulse{
     0%{
-        box-shadow:#ff69b4 0 0 0 0;
+        box-shadow:#aaaaab 0 0 0 0;
     }
     75%{
         box-shadow:#ff69b400 0 0 0 16px;

@@ -3,6 +3,7 @@
     import 'bootstrap/dist/js/bootstrap.bundle.min.js';
     import Scales from "./components/Scales.svelte";
     import Chords from "./components/Chords.svelte";
+    //import Metronome from "./components/Metronome.svelte";
     import Navbar from "./components/Navbar.svelte";
     
     export let rootNote = 'A';
@@ -37,15 +38,21 @@
             <li class="nav-item">
               <a class="nav-link" aria-current="page" id="chords-tab" data-bs-toggle="tab" data-bs-target="#chords" role="tab" aria-controls="chords" aria-selected="true">Chords</a>
             </li>
+            <!-- <li class="nav-item">
+                <a class="nav-link" aria-current="page" id="metronome-tab" data-bs-toggle="tab" data-bs-target="#metronome" role="tab" aria-controls="metronome" aria-selected="true">Metronome</a>
+              </li> -->
           </ul>
         <div class="list-group">
             <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="scales" role="scalespanel" aria-labelledby="scales-tab">
+                <div class="tab-pane fade show active" id="scales" aria-labelledby="scales-tab">
                     <Scales {rootNote} {pulse} />
                 </div>
-                <div class="tab-pane fade" id="chords" role="chordspanel" aria-labelledby="chords-tab">
+                <div class="tab-pane fade" id="chords" aria-labelledby="chords-tab">
                     <Chords {rootNote} {pulse} />
                 </div>
+                <!-- <div class="tab-pane fade" id="metronome" aria-labelledby="metronome-tab">
+                    <Metronome />
+                </div> -->
             </div>
         </div>
     </div>
