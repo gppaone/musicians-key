@@ -3,6 +3,7 @@
     import 'bootstrap/dist/js/bootstrap.bundle.min.js';
     import Scales from "./components/Scales.svelte";
     import Chords from "./components/Chords.svelte";
+    import Fretboard from "./components/Fretboard.svelte";
     //import Metronome from "./components/Metronome.svelte";
     import Navbar from "./components/Navbar.svelte";
     
@@ -41,6 +42,9 @@
             <!-- <li class="nav-item">
                 <a class="nav-link" aria-current="page" id="metronome-tab" data-bs-toggle="tab" data-bs-target="#metronome" role="tab" aria-controls="metronome" aria-selected="true">Metronome</a>
               </li> -->
+              <li>
+                <a class="nav-link" aria-current="page" id="fretboard-tab" data-bs-toggle="tab" data-bs-target="#fretboard" role="tab" aria-controls="fretboard" aria-selected="true">Fretboard</a>
+              </li>
           </ul>
         <div class="list-group">
             <div class="tab-content" id="myTabContent">
@@ -53,6 +57,9 @@
                 <!-- <div class="tab-pane fade" id="metronome" aria-labelledby="metronome-tab">
                     <Metronome />
                 </div> -->
+                <div class="tab-pane fade" id="fretboard" aria-labelledby="fretboard-tab">
+                    <Fretboard />
+                </div>
             </div>
         </div>
     </div>
