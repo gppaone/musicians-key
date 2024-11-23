@@ -1,4 +1,30 @@
 <script>
+    import { onMount } from 'svelte';
+    import { Fretboard } from '@moonwave99/fretboard.js';
+
+    let fretboard;
+
+    onMount(() => {
+        fretboard = new Fretboard({
+            el: document.querySelector(".fretboard"),
+            width: 300,
+            height: 200,
+            bottomPadding: 0,
+            scaleFrets: false,
+            stringWidth: 2,
+            fretWidth: 2,
+            fretCount: 3,
+            dotSize: 25,
+            dotStrokeWidth: 3,
+            fretNumbersMargin: 30,
+            showFretNumbers: false
+        });
+    });
+
+    function loadFretboardChord(){
+        fretboard.renderChord('x32010');
+    }
+
     // all notes
     let notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
     export let pulse = false;
@@ -59,13 +85,14 @@
 </script>
 
 {#each otherChords as { chordName, chord }}
-<h5>{rootNote} {chordName}</h5>
+<h5>{rootNote} {chordName} <span><button class="btn btn-sm fretbtn" on:click={() => loadFretboardChord()}>fretboard view</button></span></h5>
 <div class="container-fluid list-group-item  {pulse ? 'pulse' : ''}">
     <div class="row">
     {#each chord as note}
         <div class="col">{note}</div>
     {/each}
     </div>
+    <div class="fretboard"></div>
 </div>
 {/each}
 <div class="arrow-container">
@@ -100,7 +127,9 @@
     .pulse{
         animation:pulse 1500ms;
     }
-
+    .fretboard {
+        max-width:300px;
+    }
     @keyframes pulse{
     0%{
         box-shadow:#aaaaab 0 0 0 0;
